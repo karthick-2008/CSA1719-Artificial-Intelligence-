@@ -1,0 +1,74 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPmNScSTIRe5670P7tzXfaB",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/karthick-2008/CSA1719-Artificial-Intelligence-/blob/main/Lab%20Question%204\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IP-2-0SiZS7A",
+        "outputId": "e6eacb87-afdc-4bb4-d62c-c342f5331977"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "SEND = 9567\n",
+            "MORE = 1085\n",
+            "MONEY = 10652\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "from itertools import permutations\n",
+        "\n",
+        "letters = \"SENDMORY\"\n",
+        "\n",
+        "for p in permutations(range(10), len(letters)):\n",
+        "    d = dict(zip(letters, p))\n",
+        "\n",
+        "    if d['S'] == 0 or d['M'] == 0:\n",
+        "        continue\n",
+        "\n",
+        "    SEND = d['S']*1000 + d['E']*100 + d['N']*10 + d['D']\n",
+        "    MORE = d['M']*1000 + d['O']*100 + d['R']*10 + d['E']\n",
+        "    MONEY = d['M']*10000 + d['O']*1000 + d['N']*100 + d['E']*10 + d['Y']\n",
+        "\n",
+        "    if SEND + MORE == MONEY:\n",
+        "        print(\"SEND =\", SEND)\n",
+        "        print(\"MORE =\", MORE)\n",
+        "        print(\"MONEY =\", MONEY)\n",
+        "        break\n"
+      ]
+    }
+  ]
+}
