@@ -1,0 +1,76 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPJtlOLpy96qT4g9RxUyEKb",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/karthick-2008/CSA1719-Artificial-Intelligence-/blob/main/Lab%20Question%208\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 11,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IP-2-0SiZS7A",
+        "outputId": "32cc3de3-e3a8-47a1-dfef-76f9cb132671"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "DFS Traversal:\n",
+            "A B D E C F "
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "def dfs(graph, start, visited=None):\n",
+        "    if visited is None:\n",
+        "        visited = set()\n",
+        "\n",
+        "    if start not in visited:\n",
+        "        print(start, end=\" \")\n",
+        "        visited.add(start)\n",
+        "\n",
+        "        for neighbour in graph[start]:\n",
+        "            dfs(graph, neighbour, visited)\n",
+        "\n",
+        "graph = {\n",
+        "    'A': ['B', 'C'],\n",
+        "    'B': ['D', 'E'],\n",
+        "    'C': ['F'],\n",
+        "    'D': [],\n",
+        "    'E': [],\n",
+        "    'F': []\n",
+        "}\n",
+        "\n",
+        "print(\"DFS Traversal:\")\n",
+        "dfs(graph, 'A')\n"
+      ]
+    }
+  ]
+}
