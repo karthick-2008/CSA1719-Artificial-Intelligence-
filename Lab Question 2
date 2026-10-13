@@ -1,0 +1,100 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyObSnQe76XWeutWczu9bl/t",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/karthick-2008/CSA1719-Artificial-Intelligence-/blob/main/Lab%20Question%202\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IP-2-0SiZS7A",
+        "outputId": "7468a467-edc4-4b50-f248-99b4bbc2c864"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Q . . . . . . .\n",
+            ". . . . Q . . .\n",
+            ". . . . . . . Q\n",
+            ". . . . . Q . .\n",
+            ". . Q . . . . .\n",
+            ". . . . . . Q .\n",
+            ". Q . . . . . .\n",
+            ". . . Q . . . .\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "N = 8\n",
+        "\n",
+        "def print_solution(board):\n",
+        "    for row in board:\n",
+        "        print(\" \".join(\"Q\" if x else \".\" for x in row))\n",
+        "\n",
+        "def is_safe(board, row, col):\n",
+        "    for i in range(row):\n",
+        "        if board[i][col]:\n",
+        "            return False\n",
+        "\n",
+        "        if col - (row - i) >= 0 and board[i][col - (row - i)]:\n",
+        "            return False\n",
+        "\n",
+        "        if col + (row - i) < N and board[i][col + (row - i)]:\n",
+        "            return False\n",
+        "\n",
+        "    return True\n",
+        "\n",
+        "def solve(board, row):\n",
+        "    if row == N:\n",
+        "        return True\n",
+        "\n",
+        "    for col in range(N):\n",
+        "        if is_safe(board, row, col):\n",
+        "            board[row][col] = 1\n",
+        "\n",
+        "            if solve(board, row + 1):\n",
+        "                return True\n",
+        "\n",
+        "            board[row][col] = 0\n",
+        "\n",
+        "    return False\n",
+        "\n",
+        "board = [[0] * N for _ in range(N)]\n",
+        "\n",
+        "if solve(board, 0):\n",
+        "    print_solution(board)\n",
+        "else:\n",
+        "    print(\"No solution exists\")\n"
+      ]
+    }
+  ]
+}
