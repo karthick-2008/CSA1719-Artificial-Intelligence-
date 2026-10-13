@@ -1,0 +1,100 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNoWJsurCZ+egHL06CTJF6W",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/karthick-2008/CSA1719-Artificial-Intelligence-/blob/main/Lab%20Question%203\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IP-2-0SiZS7A",
+        "outputId": "60140631-c167-4003-9209-02e67c70c91a"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "0 0\n",
+            "4 0\n",
+            "0 3\n",
+            "4 3\n",
+            "1 3\n",
+            "3 0\n",
+            "1 0\n",
+            "3 3\n",
+            "0 1\n",
+            "4 2\n",
+            "Target achieved!\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "from collections import deque\n",
+        "\n",
+        "def water_jug(capacity1, capacity2, target):\n",
+        "    visited = set()\n",
+        "    queue = deque([(0, 0)])\n",
+        "\n",
+        "    while queue:\n",
+        "        jug1, jug2 = queue.popleft()\n",
+        "\n",
+        "        if (jug1, jug2) in visited:\n",
+        "            continue\n",
+        "\n",
+        "        visited.add((jug1, jug2))\n",
+        "        print(jug1, jug2)\n",
+        "\n",
+        "        if jug1 == target or jug2 == target:\n",
+        "            print(\"Target achieved!\")\n",
+        "            return\n",
+        "\n",
+        "        states = [\n",
+        "            (capacity1, jug2),\n",
+        "            (jug1, capacity2),\n",
+        "            (0, jug2),\n",
+        "            (jug1, 0),\n",
+        "            (max(0, jug1 - (capacity2 - jug2)),\n",
+        "             min(capacity2, jug1 + jug2)),\n",
+        "            (min(capacity1, jug1 + jug2),\n",
+        "             max(0, jug2 - (capacity1 - jug1)))\n",
+        "        ]\n",
+        "\n",
+        "        for state in states:\n",
+        "            if state not in visited:\n",
+        "                queue.append(state)\n",
+        "\n",
+        "    print(\"No solution exists\")\n",
+        "\n",
+        "water_jug(4, 3, 2)\n"
+      ]
+    }
+  ]
+}
