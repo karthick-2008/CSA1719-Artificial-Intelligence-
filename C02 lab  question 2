@@ -1,0 +1,136 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMQzl/7wV0EJQ9oVsXJmZ1g",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/karthick-2008/CSA1719-Artificial-Intelligence-/blob/main/C02%20lab%20%20question%202\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "TaoiNxSQ7r-J",
+        "outputId": "d36cb09e-2440-4496-bb3d-79f70fee6348"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "  |   |  \n",
+            "--+---+--\n",
+            "  |   |  \n",
+            "--+---+--\n",
+            "  |   |  \n",
+            "Player X, enter position (1-9): 1\n",
+            "X |   |  \n",
+            "--+---+--\n",
+            "  |   |  \n",
+            "--+---+--\n",
+            "  |   |  \n",
+            "Player O, enter position (1-9): 3\n",
+            "X |   | O\n",
+            "--+---+--\n",
+            "  |   |  \n",
+            "--+---+--\n",
+            "  |   |  \n",
+            "Player X, enter position (1-9): 5\n",
+            "X |   | O\n",
+            "--+---+--\n",
+            "  | X |  \n",
+            "--+---+--\n",
+            "  |   |  \n",
+            "Player O, enter position (1-9): 9\n",
+            "X |   | O\n",
+            "--+---+--\n",
+            "  | X |  \n",
+            "--+---+--\n",
+            "  |   | O\n",
+            "Player X, enter position (1-9): 8\n",
+            "X |   | O\n",
+            "--+---+--\n",
+            "  | X |  \n",
+            "--+---+--\n",
+            "  | X | O\n",
+            "Player O, enter position (1-9): 6\n",
+            "X |   | O\n",
+            "--+---+--\n",
+            "  | X | O\n",
+            "--+---+--\n",
+            "  | X | O\n",
+            "Player O wins!\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Tic Tac Toe Game\n",
+        "\n",
+        "board = [\" \"] * 9\n",
+        "\n",
+        "def display():\n",
+        "    print(board[0], \"|\", board[1], \"|\", board[2])\n",
+        "    print(\"--+---+--\")\n",
+        "    print(board[3], \"|\", board[4], \"|\", board[5])\n",
+        "    print(\"--+---+--\")\n",
+        "    print(board[6], \"|\", board[7], \"|\", board[8])\n",
+        "\n",
+        "def check_win():\n",
+        "    wins = [\n",
+        "        (0, 1, 2), (3, 4, 5), (6, 7, 8),\n",
+        "        (0, 3, 6), (1, 4, 7), (2, 5, 8),\n",
+        "        (0, 4, 8), (2, 4, 6)\n",
+        "    ]\n",
+        "    for a, b, c in wins:\n",
+        "        if board[a] == board[b] == board[c] != \" \":\n",
+        "            return True\n",
+        "    return False\n",
+        "\n",
+        "player = \"X\"\n",
+        "\n",
+        "for turn in range(9):\n",
+        "    display()\n",
+        "    pos = int(input(f\"Player {player}, enter position (1-9): \")) - 1\n",
+        "\n",
+        "    if pos < 0 or pos > 8 or board[pos] != \" \":\n",
+        "        print(\"Invalid position! Try again.\")\n",
+        "        continue\n",
+        "\n",
+        "    board[pos] = player\n",
+        "\n",
+        "    if check_win():\n",
+        "        display()\n",
+        "        print(\"Player\", player, \"wins!\")\n",
+        "        break\n",
+        "\n",
+        "    player = \"O\" if player == \"X\" else \"X\"\n",
+        "else:\n",
+        "    display()\n",
+        "    print(\"It's a draw!\")"
+      ]
+    }
+  ]
+}
