@@ -1,0 +1,86 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOnlILVbgf44FtxmKcnwy4N",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/karthick-2008/CSA1719-Artificial-Intelligence-/blob/main/2-lab%20question%204\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "GsOOAEtP_kw2",
+        "outputId": "de832dac-7c50-4d2f-ba83-6668b8adf64d"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Optimal value: 5\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "# Alpha-Beta Pruning Algorithm\n",
+        "\n",
+        "def alphabeta(depth, node, alpha, beta, maximizing):\n",
+        "    if depth == 3:\n",
+        "        return node\n",
+        "\n",
+        "    if maximizing:\n",
+        "        best = -1000\n",
+        "        for value in [3, 5]:\n",
+        "            score = alphabeta(depth + 1, value,\n",
+        "                              alpha, beta, False)\n",
+        "            best = max(best, score)\n",
+        "            alpha = max(alpha, best)\n",
+        "\n",
+        "            if beta <= alpha:\n",
+        "                break\n",
+        "        return best\n",
+        "\n",
+        "    else:\n",
+        "        best = 1000\n",
+        "        for value in [3, 5]:\n",
+        "            score = alphabeta(depth + 1, value,\n",
+        "                              alpha, beta, True)\n",
+        "            best = min(best, score)\n",
+        "            beta = min(beta, best)\n",
+        "\n",
+        "            if beta <= alpha:\n",
+        "                break\n",
+        "        return best\n",
+        "\n",
+        "\n",
+        "result = alphabeta(0, 0, -1000, 1000, True)\n",
+        "print(\"Optimal value:\", result)\n"
+      ]
+    }
+  ]
+}
