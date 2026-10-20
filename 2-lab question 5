@@ -1,0 +1,66 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMrXG9aFOdm6zaci0BQwFI9",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/karthick-2008/CSA1719-Artificial-Intelligence-/blob/main/2-lab%20question%205\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "WAjQA91eTmoR",
+        "outputId": "d8e1bfe8-0d48-4537-8bb6-e8e29f3093f1"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Decision Tree Prediction: 1\n"
+          ]
+        }
+      ],
+      "source": [
+        "from sklearn.tree import DecisionTreeClassifier\n",
+        "\n",
+        "# Input dataset\n",
+        "X = [[1, 1], [1, 0], [0, 1], [0, 0], [1, 1], [0, 0]]\n",
+        "y = [1, 1, 1, 0, 1, 0]\n",
+        "\n",
+        "# Create and train the model\n",
+        "model = DecisionTreeClassifier(criterion=\"entropy\")\n",
+        "model.fit(X, y)\n",
+        "\n",
+        "# Predict output\n",
+        "prediction = model.predict([[1, 0]])\n",
+        "\n",
+        "print(\"Decision Tree Prediction:\", prediction[0])"
+      ]
+    }
+  ]
+}
