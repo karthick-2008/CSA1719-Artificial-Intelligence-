@@ -1,0 +1,78 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOIVSRQzT2LjGlEaidBppRI",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/karthick-2008/CSA1719-Artificial-Intelligence-/blob/main/2-lab%20question%206\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "WAjQA91eTmoR",
+        "outputId": "289b915b-0f6b-4474-e7eb-f04548e2bd73"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Input: [0, 1]\n",
+            "Predicted Output: 1\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "import numpy as np\n",
+        "from sklearn.neural_network import MLPClassifier\n",
+        "\n",
+        "# Input data\n",
+        "X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])\n",
+        "y = np.array([0, 1, 1, 1])\n",
+        "\n",
+        "# Create Feed Forward Neural Network\n",
+        "model = MLPClassifier(\n",
+        "    hidden_layer_sizes=(4,),\n",
+        "    activation='relu',\n",
+        "    solver='lbfgs',\n",
+        "    max_iter=1000,\n",
+        "    random_state=1\n",
+        ")\n",
+        "\n",
+        "# Train the network\n",
+        "model.fit(X, y)\n",
+        "\n",
+        "# Test the network\n",
+        "prediction = model.predict([[0, 1]])\n",
+        "\n",
+        "print(\"Input:\", [0, 1])\n",
+        "print(\"Predicted Output:\", prediction[0])\n"
+      ]
+    }
+  ]
+}
