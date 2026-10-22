@@ -1,0 +1,78 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNyE0bnQbN3hCZzeVnP4Q8F",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/karthick-2008/CSA1719-Artificial-Intelligence-/blob/main/lab%20Question%206\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "W3EX6oIg0-ns",
+        "outputId": "8f3e99eb-af51-46ba-d82e-fa8bf30f64af"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Vacuum is in room A\n",
+            "Cleaning room A\n",
+            "Vacuum is in room A\n",
+            "Vacuum is in room B\n",
+            "Cleaning room B\n",
+            "All rooms are clean!\n",
+            "{'A': 'Clean', 'B': 'Clean'}\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "# Vacuum Cleaner Problem\n",
+        "\n",
+        "rooms = {'A': 'Dirty', 'B': 'Dirty'}\n",
+        "location = 'A'\n",
+        "\n",
+        "while 'Dirty' in rooms.values():\n",
+        "    print(\"Vacuum is in room\", location)\n",
+        "\n",
+        "    if rooms[location] == 'Dirty':\n",
+        "        print(\"Cleaning room\", location)\n",
+        "        rooms[location] = 'Clean'\n",
+        "\n",
+        "    elif location == 'A':\n",
+        "        location = 'B'\n",
+        "    else:\n",
+        "        location = 'A'\n",
+        "\n",
+        "print(\"All rooms are clean!\")\n",
+        "print(rooms)\n"
+      ]
+    }
+  ]
+}
